@@ -66,7 +66,7 @@ const getAllUsers = async (req, res) => {
 //CATEGORY
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // Directory to save images
+        cb(null, 'uploads/category/'); // Directory to save images
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname)); // Unique filename with original extension
