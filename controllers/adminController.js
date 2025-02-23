@@ -100,7 +100,7 @@ const addCategory = async (req, res) => {
         const category = await Category.create({
             title,
             desc,
-            image: req.file ? `/uploads/${req.file.filename}` : null,
+            image: req.file ? `/uploads/category/${req.file.filename}` : null,
         });
 
         res.status(201).json({
