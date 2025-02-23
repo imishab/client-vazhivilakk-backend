@@ -63,64 +63,6 @@ const getAllUsers = async (req, res) => {
 };
 
 
-// Admin Add Product
-// Configure multer for file uploads
-
-
-// Add product API with image uploader
-// const addProduct = async (req, res) => {
-//     const { title, desc, price, mrp, category } = req.body;
-//     try {
-//         if (await Product.findOne({ title })) {
-//             return res.status(400).json({ message: 'Product already exists' });
-//         }
-
-//         const product = await Product.create({
-//             title,
-//             desc,
-//             price,
-//             mrp,
-//             category,
-//             image: req.file ? `/uploads/${req.file.filename}` : null,
-//         });
-
-//         res.status(201).json({
-//             id: product._id,
-//             title: product.title,
-//             desc: product.desc,
-//             price: product.price,
-//             mrp: product.mrp,
-//             category: product.category,
-//             image: product.image,
-//         });
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// };
-
-// const getAllProducts = async (req, res) => {
-//     try {
-//         const products = await Product.find(); // Get all products from the database
-//         res.status(200).json(products); // Return the list of products in the response
-//     } catch (err) {
-//         console.error('Error fetching products:', err);
-//         res.status(500).json({ message: 'Internal server error' });
-//     }
-// };
-
-// const deleteProduct = async (req, res) => {
-//     const { id } = req.params; // Get product ID from the route parameters
-//     try {
-//         const product = await Product.findByIdAndDelete(id); // Find and delete the product
-//         if (!product) {
-//             return res.status(404).json({ message: 'Product not found' });
-//         }
-//         res.status(200).json({ message: 'Product deleted successfully' });
-//     } catch (error) {
-//         res.status(500).json({ message: 'Server error', error: error.message });
-//     }
-// };
-
 //CATEGORY
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -131,7 +73,7 @@ const storage = multer.diskStorage({
     },
 });
 
-const upload = multer({
+const catupload = multer({
     storage,
     fileFilter: (req, file, cb) => {
         const allowedTypes = /jpeg|jpg|png/;
@@ -242,6 +184,7 @@ module.exports = {
     // deleteProduct,
     addCategory,
     getAllCategories,
+    catupload,
     deleteCategory,
     getAllOrders,
     aiImage,

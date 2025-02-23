@@ -10,6 +10,7 @@ const { signup,
     deleteCategory,
     getAllOrders,
     aiImage,
+    catupload,
 
 } = require('../controllers/adminController');
 const {
@@ -41,7 +42,7 @@ router.get('/users', protect, getAllUsers, (req, res) => {
 
 
 ///////////////CATEGORY////////////////////////
-router.post('/add-category', protect, upload.single('image'), addCategory);
+router.post('/add-category', protect, catupload.single('image'), addCategory);
 router.get('/all-categories', protect, getAllCategories);
 router.delete('/delete-category/:id', protect, deleteCategory);
 
